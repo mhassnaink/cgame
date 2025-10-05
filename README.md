@@ -1,7 +1,7 @@
 
 # cgame
 
-> **Ultra-lightweight, header-only C and C++ framework for GUI and rendering.**  
+> **Ultra-lightweight, header-only C++ (with partial C compatibility) framework for GUI and rendering.**  
 > Built from scratch for performance, clarity, and full developer control.  
 > Created and maintained by **M. Hassnain K**.  
 
@@ -11,7 +11,7 @@
 
 **cgame** is a **header-only**, **CPU-based**, **cross-compiler C++ framework** designed to give developers direct, low-level control over rendering and GUI systems — without the weight of traditional engines or external dependencies.  
 
-Developed over a focused two-week period for **Windows**, cgame defines its own rendering pipeline, event system, and drawing interface entirely in C and C++, while maintaining the clean, minimal syntax that developers expect from modern libraries.  
+Developed over a focused two-week period for **Windows**, cgame defines its own rendering pipeline, event system, and drawing interface entirely in C++, while maintaining the clean, minimal syntax that developers expect from modern libraries.  
 
 Unlike wrappers or API bindings, **cgame *is* the framework** — written from the ground up to compete with large-scale libraries like **Raylib**, **SDL**, and **SFML** in speed, simplicity, and structure, but with **zero dependencies** beyond the C++ Standard Library.
 
