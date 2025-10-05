@@ -1,5 +1,9 @@
 
-# cgame
+<p align="center">
+  <img src="docs/cgame.png" alt="cgame logo" width="128" height="128">
+</p>
+
+<h1 align="center">CGAME</h1>
 
 > **Ultra-lightweight, header-only C++ (with partial C compatibility) framework for GUI and rendering.**  
 > Built from scratch for performance, clarity, and full developer control.  
