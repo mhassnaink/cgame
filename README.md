@@ -237,5 +237,3 @@ Founder & Lead Developer of the **cgame framework**
 
 > © 2025 M. Hassnain K — Released under the zlib/libpng License
 > **cgame**: *A lightweight, CPU-based C and C++ framework for graphical freedom.*
-
-```
