@@ -131,7 +131,7 @@ if (cgame.mouse.just_released(CGameButtonMiddle))
 
 int main() {
     cgame.init();
-    cgame.display.set_mode(800, 600, CGAME_RESIZABLE | CGAME_DPI_AWARE);
+    CGameScreen screen = cgame.display.set_mode(800, 600, CGAME_RESIZABLE | CGAME_DPI_AWARE);
     cgame.display.set_title("Hello from cgame!");
 
     while (true) {
