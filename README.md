@@ -57,7 +57,7 @@ At its core, **cgame** consists of three main modules:
 Handles window creation, resizing, DPI awareness, and basic graphics API initialization.
 
 ```cpp
-cgame.display.set_mode(int width, int height, int flags);
+CGameScreen screen = cgame.display.set_mode(int width, int height, int flags);
 cgame.display.set_title(const char* title);
 cgame.display.set_icon(const char* iconFilePath);
 ````
@@ -157,13 +157,13 @@ CXX_FLAGS = -Iinclude
 LD_FLAGS  = -lopengl32 -lgdi32 -lgdiplus -lmsimg32 -lws2_32 -municode
 
 SRC       = src/main.cpp
-TARGET    = main.exe
+TARGET    = main
 
 all:
     $(CXX) $(CXX_FLAGS) $(SRC) -o $(TARGET) $(LD_FLAGS)
 
 clean:
-    rm -f *.exe *.o
+    rm -f $(TARGET) *.o
 ```
 
 Build manually:
