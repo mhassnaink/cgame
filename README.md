@@ -152,18 +152,18 @@ int main() {
 Example `Makefile`:
 
 ```makefile
-CXX       = g++
-CXX_FLAGS = -Iinclude
-LD_FLAGS  = -lopengl32 -lgdi32 -lgdiplus -lmsimg32 -lws2_32 -municode
+CXX      = g++
+CXXFLAGS = -Iinclude -IC:/Users/drgho/OneDrive/Belgeler/c++/include
+LDFLAGS  = -lopengl32 -lgdi32 -lgdiplus -lmsimg32 -lws2_32 -municode
 
-SRC       = src/main.cpp
-TARGET    = main
-
+SRC      = src/main.cpp #src/glad.c
+TARGET   = main
+ 
 all:
-    $(CXX) $(CXX_FLAGS) $(SRC) -o $(TARGET) $(LD_FLAGS)
-
+	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS) 
 clean:
-    rm -f $(TARGET) *.o
+	rm -f $(TARGET).exe *.o
+
 ```
 
 Build manually:
