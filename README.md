@@ -153,10 +153,10 @@ Example `Makefile`:
 
 ```makefile
 CXX      = g++
-CXXFLAGS = -Iinclude -IC:/Users/drgho/OneDrive/Belgeler/c++/include
+CXXFLAGS = -Iinclude
 LDFLAGS  = -lopengl32 -lgdi32 -lgdiplus -lmsimg32 -lws2_32 -municode
 
-SRC      = src/main.cpp #src/glad.c
+SRC      = src/main.cpp
 TARGET   = main
  
 all:
