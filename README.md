@@ -128,15 +128,17 @@ if (cgame.mouse.just_released(CGameButtonMiddle))
 
 ```cpp
 #include <cgame/cgame.h>
-
 int main() {
     cgame.init();
     CGameScreen screen = cgame.display.set_mode(800, 600, CGAME_RESIZABLE | CGAME_DPI_AWARE);
-    cgame.display.set_title("Hello from cgame!");
+    // cgame.display.set_title("Hello from cgame!");
 
     while (true) {
         if (cgame.event.get() == cgame.QUIT) break;
-        cgame.draw.fill_rect(100, 100, 200, 150, 255, 0, 0);
+        cgame.display.clear ();
+        cgame.display.set_bgcolor (245, 245, 250);
+        cgame.draw.fill_rect(250, 150, 300, 300, 255, 128, 64);
+        cgame.display.flip  ();
     }
 
     cgame.quit();
