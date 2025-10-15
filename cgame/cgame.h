@@ -688,7 +688,6 @@
             bmi.bmiHeader.biPlanes = 1;
             bmi.bmiHeader.biBitCount = 32;
             bmi.bmiHeader.biCompression = BI_RGB;
-            void* bits = NULL;
             // recreate HBITMAP from current (straight) RGBA pixels
             HBITMAP hb = _cgame_image_create_hbitmap_from_rgba(img);
             if (hb) {
@@ -730,7 +729,6 @@
             bmi.bmiHeader.biPlanes = 1;
             bmi.bmiHeader.biBitCount = 32;
             bmi.bmiHeader.biCompression = BI_RGB;
-            void* bits = NULL;
             // recreate HBITMAP from current (straight) RGBA pixels
             HBITMAP hb = _cgame_image_create_hbitmap_from_rgba(img);
             if (hb) {
@@ -817,54 +815,6 @@
             DeleteObject(hb);
         }
     }
-    // Fill fully-transparent pixels' RGB by copying the nearest opaque neighbor's RGB.
-    // max_radius: search radius in pixels (3..8 is reasonable).
-    // static void _cgame_image_clean_edges(CGameImage *img, int max_radius) {
-    //     if (!img || !img->pixels || img->channels < 4) return;
-    //     int w = img->width, h = img->height, c = img->channels;
-    //     size_t total = (size_t)w * h * c;
-    //     unsigned char *src = (unsigned char*)malloc(total);
-    //     if (!src) return;
-    //     memcpy(src, img->pixels, total);
-
-    //     for (int y = 0; y < h; ++y) {
-    //         for (int x = 0; x < w; ++x) {
-    //             size_t idx = ((size_t)y * w + x) * c;
-    //             unsigned char a = src[idx + 3];
-    //             if (a != 0) continue; // only fix fully transparent
-
-    //             bool found = false;
-    //             for (int r = 1; r <= max_radius && !found; ++r) {
-    //                 int xmin = x - r, xmax = x + r;
-    //                 int ymin = y - r, ymax = y + r;
-    //                 if (xmin < 0) xmin = 0;
-    //                 if (ymin < 0) ymin = 0;
-    //                 if (xmax >= w) xmax = w - 1;
-    //                 if (ymax >= h) ymax = h - 1;
-
-    //                 for (int yy = ymin; yy <= ymax && !found; ++yy) {
-    //                     for (int xx = xmin; xx <= xmax; ++xx) {
-    //                         // optional: only perimeter to be faster
-    //                         if (abs(xx - x) != r && abs(yy - y) != r) continue;
-    //                         size_t j = ((size_t)yy * w + xx) * c;
-    //                         if (src[j + 3] != 0) {
-    //                             img->pixels[idx + 0] = src[j + 0];
-    //                             img->pixels[idx + 1] = src[j + 1];
-    //                             img->pixels[idx + 2] = src[j + 2];
-    //                             // keep alpha = 0
-    //                             img->pixels[idx + 3] = 0;
-    //                             found = true;
-    //                             break;
-    //                         }
-    //                     }
-    //                 }
-    //             }
-    //             // if not found, leave RGB as-is (rare)
-    //         }
-    //     }
-
-    //     free(src);
-    // }
 
     // Create a top-down DIB HBITMAP from RGBA (straight) image pixels.
     // This function performs premultiplication (RGBA -> premultiplied BGRA)
@@ -1873,3 +1823,4 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 
 #endif // CGAME_H
+
