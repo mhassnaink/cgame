@@ -561,8 +561,8 @@
 
         // Ensure GDI+ started
         if (!_cgame_gdiplus_inited) {
-            GdiplusStartupInput gdiplusStartupInput;
-            if (GdiplusStartup(&_cgame_gdiplusToken, &gdiplusStartupInput, NULL) == Ok) {
+            Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+            if (GdiplusStartup(&_cgame_gdiplusToken, &gdiplusStartupInput, NULL) == Gdiplus::Ok) {
                 _cgame_gdiplus_inited = true;
             } else {
                 return img;
@@ -578,7 +578,7 @@
         Bitmap* bmp = Bitmap::FromFile(wpath, FALSE);
         free(wpath);
         if (!bmp) return img;
-        if (bmp->GetLastStatus() != Ok) {
+        if (bmp->GetLastStatus() != Gdiplus::Ok) {
             delete bmp;
             return img;
         }
@@ -873,7 +873,7 @@
         Rect r(0,0,w,h);
 
         // Request 32bpp ARGB (premultiplied) from GDI+
-        if (bmp->LockBits(&r, ImageLockModeRead, PixelFormat32bppARGB, &bd) != Ok) {
+        if (bmp->LockBits(&r, ImageLockModeRead, PixelFormat32bppARGB, &bd) != Gdiplus::Ok) {
             return false;
         }
 
@@ -1029,8 +1029,8 @@
 
         // Start GDI+ (if not already)
         if (!_cgame_gdiplus_inited) {
-            GdiplusStartupInput gdiplusStartupInput;
-            if (GdiplusStartup(&_cgame_gdiplusToken, &gdiplusStartupInput, NULL) == Ok) {
+            Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+            if (GdiplusStartup(&_cgame_gdiplusToken, &gdiplusStartupInput, NULL) == Gdiplus::Ok) {
                 _cgame_gdiplus_inited = true;
             }
         }
@@ -1375,7 +1375,7 @@
         WCHAR* wpath = (WCHAR*)malloc(wlen * sizeof(WCHAR));
         MultiByteToWideChar(CP_UTF8, 0, path, -1, wpath, wlen);
 
-        if (_cgame_font_collection.AddFontFile(wpath) != Ok) {
+        if (_cgame_font_collection.AddFontFile(wpath) != Gdiplus::Ok) {
             free(wpath);
             return false;
         }
