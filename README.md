@@ -4,6 +4,9 @@
 </p>
 
 <h1 align="center">CGAME</h1>
+<p align="center">
+  <b>🎉 Version 1.0 Released — First Stable Build 🎉</b>
+</p>
 
 > **Ultra-lightweight, header-only C++ (with partial C compatibility) framework for GUI and rendering.**  
 > Built from scratch for performance, clarity, and full developer control.  
@@ -57,9 +60,11 @@ At its core, **cgame** consists of three main modules:
 Handles window creation, resizing, DPI awareness, and basic graphics API initialization.
 
 ```cpp
-CGameScreen screen = cgame.display.set_mode(int width, int height, int flags);
-cgame.display.set_title(const char* title);
-cgame.display.set_icon(const char* iconFilePath);
+cgame.init									();
+CGameScreen screen = cgame.display.set_mode (int width, int height, int flags);
+cgame.display.set_title 				    (const char* title);
+cgame.display.set_icon				        (const char* iconFilePath);
+cgame.display.set_icon_from_image			(const CGameImage *img);
 ````
 
 **Flags:**
@@ -92,18 +97,24 @@ if (event == cgame.VIDEORESIZE)  // Window resized
 Provides simple but efficient drawing routines.
 
 ```cpp
-cgame.draw.rect(x, y, w, h, r, g, b);                     // Outline rect
-cgame.draw.fill_rect(x, y, w, h, r, g, b);                // Filled rect
-cgame.draw.rounded_rect(x, y, w, h, radius, bw, r, g, b); // Rounded outline
-cgame.draw.rounded_fill_rect(x, y, w, h, radius, r, g, b);// Rounded fill
+cgame.draw.rect			 	 (int x, int y, int w, int h, int border_width, int r, int g, int b);             // Outline rect
+cgame.draw.fill_rect		 (x, y, w, h, r, g, b);                											  // Filled  rect
+cgame.draw.rounded_rect		 (int x, int y, int w, int h, int radius, int border_width, int r, int g, int b); // Rounded outline
+cgame.draw.rounded_fill_rect (x, y, w, h, radius, r, g, b);						  					    	  // Rounded fill
+cgame.draw.circle		     (int x, int y, int radius, int border_width, int r, int g, int b);				  // Circle  outline
+cgame.draw.fill_circle		 (int x, int y, int radius, int r, int g, int b);								  // Circle  fill
 ```
 
 **Images:**
 
 ```cpp
-CGameImage image = cgame.image.load("icon.png");
-cgame.image.draw(&image, 100, 100);
-cgame.image.unload(&image);
+CGameImage image = cgame.image.load ("icon.png");       // Loads   image
+image = cgame.image.resize		    (&image, 200, 200); // Resizes image
+image = cgame.image.rotate		    (&image, 30.0f);    // Rotates image
+image = cgame.image.flip_vertical   (&image);		    // Flips   image vertically
+image = cgame.image.flip_horizontal (&image);	        // Flips   image horizontally
+cgame.image.draw				    (&image, 100, 100); // Draws   image
+cgame.image.unload				    (&image);		    // Unloads image
 ```
 
 ---
@@ -113,13 +124,13 @@ cgame.image.unload(&image);
 Keyboard and mouse input are fully integrated.
 
 ```cpp
-if (cgame.key.pressed(cgame.K_a))          // Key held
-if (cgame.key.just_pressed(cgame.K_SPACE)) // Key pressed once
-if (cgame.key.just_released(cgame.K_d))    // Key released
+if (cgame.key.pressed       (cgame.K_a    )) // Key held
+if (cgame.key.just_pressed  (cgame.K_SPACE)) // Key pressed once
+if (cgame.key.just_released (cgame.K_d    )) // Key released
 
-if (cgame.mouse.pressed(CGameButtonLeft))
-if (cgame.mouse.just_pressed(CGameButtonRight))
-if (cgame.mouse.just_released(CGameButtonMiddle))
+if (cgame.mouse.pressed       (CGameButtonLeft  ))
+if (cgame.mouse.just_pressed  (CGameButtonRight ))
+if (cgame.mouse.just_released (CGameButtonMiddle))
 ```
 
 ---
@@ -135,10 +146,10 @@ int main() {
 
     while (true) {
         if (cgame.event.get() == cgame.QUIT) break;
-        cgame.display.clear ();
         cgame.display.set_bgcolor (245, 245, 250);
-        cgame.draw.fill_rect(250, 150, 300, 300, 255, 128, 64);
-        cgame.display.flip  ();
+        cgame.display.clear       ();
+        cgame.draw.fill_rect      (250, 150, 300, 300, 255, 128, 64);
+        cgame.display.flip        ();
     }
 
     cgame.quit();
@@ -164,7 +175,7 @@ TARGET   = main
 all:
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS) 
 clean:
-	rm -f $(TARGET).exe *.o
+	rm -f $(TARGET).exe
 
 ```
 
