@@ -5,7 +5,9 @@
 
 <h1 align="center">CGAME</h1>
 <p align="center">
-  <b>🎉 Version 1.0 Released — First Stable Build 🎉</b>
+  <b>🎉 Version 1.0 — The first official release of CGAME (2025)<br>
+		See the [Releases page](https://github.com/mhassnaink/cgame/releases) for the latest version.
+</b>
 </p>
 
 > **Ultra-lightweight, header-only C++ (with partial C compatibility) framework for GUI and rendering.**  
